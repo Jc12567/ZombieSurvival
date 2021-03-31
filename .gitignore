@@ -58,3 +58,13 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#Custom Folder Ignoring
+Assets/TextMesh Pro/
+Assets/Graphics/
+Assets/Audio/
+
+#Ignore relevant META files
+
+Assets/TextMesh Pro.meta
+Assets/Graphics.meta
+Assets/Audio.meta
