@@ -6,9 +6,12 @@ public abstract class Interactable : MonoBehaviour
 {
     protected bool activated = false;
     protected InputManager input;
-    public void Activate()
+    protected Transform parent;
+    public void Activate(Transform parent)
     {
         activated = true;
+        this.parent = parent;
+        Init();
     }
     public void Deactivate()
     {
@@ -23,6 +26,7 @@ public abstract class Interactable : MonoBehaviour
         HandleAnimation();
         HandleUse();
     }
+    protected abstract void Init();
     protected abstract void HandleAnimation();
     protected abstract void HandleUse();
 }

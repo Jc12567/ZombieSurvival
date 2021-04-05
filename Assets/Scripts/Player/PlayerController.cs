@@ -127,18 +127,13 @@ public class PlayerController : MonoBehaviour
             if (input.wantInteract)
             {
                 handItem = item;
-                handItem.GetComponent<Interactable>().Activate();
                 if (!isLeftHanded)
                 {
-                    item.transform.SetParent(mainCamera);
-                    item.transform.localPosition = rightHand.localPosition;
-                    item.transform.localRotation = rightHand.localRotation;
+                    handItem.GetComponent<Interactable>().Activate(rightHand);
                 }
                 else
                 {
-                    item.transform.SetParent(mainCamera);
-                    item.transform.localPosition = leftHand.localPosition;
-                    item.transform.localRotation = leftHand.localRotation;
+                    handItem.GetComponent<Interactable>().Activate(leftHand);
                 }
             }
         }
