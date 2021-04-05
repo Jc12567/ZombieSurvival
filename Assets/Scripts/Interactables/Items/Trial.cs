@@ -22,16 +22,13 @@ public class Trial : Interactable
 
     protected override void HandleUse()
     {
-       Debug.Log(parent.forward);
-
         if(activated && input.wantUse)
         {
-            gameObject.transform.localPosition += parent.forward * power;
-            
+            transform.Translate(parent.forward);
         }
         if(activated && input.wantExtra)
         {
-            gameObject.transform.localPosition -= parent.forward * power;
+            transform.Translate(-parent.forward);
         }
     }
     protected override void Init()
