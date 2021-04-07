@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform crouchCheck;
     [SerializeField]
-    private Transform interactCheck;
-    [SerializeField]
     private Transform mainCamera;
     [SerializeField]
     private Transform rightHand;
@@ -47,6 +45,8 @@ public class PlayerController : MonoBehaviour
     [Header("Interact")]
     [SerializeField]
     private float interactDistance = 2f;
+    [SerializeField]
+    private float interactRadius = 0.5f;
     [SerializeField]
     private GameObject handItem;
     [SerializeField]
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit raycastHit;
         GameObject item;
-        bool canInteract = Physics.Raycast(mainCamera.position, mainCamera.forward, out raycastHit, interactDistance, interactableLayer);
+        bool canInteract = Physics.SphereCast(mainCamera.position, interactRadius, mainCamera.forward, out raycastHit, interactDistance, interactableLayer);
         if (canInteract)
         {
             item = raycastHit.collider.gameObject;

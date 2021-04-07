@@ -80,6 +80,6 @@ public class InputManager : MonoBehaviour
             else
             {
                 controls.Main.Crouch.performed += controls => wantCrouch = !wantCrouch;
-                }
+            }
     }
 }
