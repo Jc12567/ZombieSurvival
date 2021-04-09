@@ -89,6 +89,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""45157e01-8ca5-407d-bfef-7f175f8f76af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -289,6 +297,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3cd0663-a23d-49a3-9a4f-2c35df457627"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -306,6 +325,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Main_Extra = m_Main.FindAction("Extra", throwIfNotFound: true);
         m_Main_Drop = m_Main.FindAction("Drop", throwIfNotFound: true);
         m_Main_Jump = m_Main.FindAction("Jump", throwIfNotFound: true);
+        m_Main_Pause = m_Main.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -364,6 +384,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Main_Extra;
     private readonly InputAction m_Main_Drop;
     private readonly InputAction m_Main_Jump;
+    private readonly InputAction m_Main_Pause;
     public struct MainActions
     {
         private @Controls m_Wrapper;
@@ -377,6 +398,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Extra => m_Wrapper.m_Main_Extra;
         public InputAction @Drop => m_Wrapper.m_Main_Drop;
         public InputAction @Jump => m_Wrapper.m_Main_Jump;
+        public InputAction @Pause => m_Wrapper.m_Main_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +435,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
+                @Pause.started -= m_Wrapper.m_MainActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -444,6 +469,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -459,5 +487,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnExtra(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

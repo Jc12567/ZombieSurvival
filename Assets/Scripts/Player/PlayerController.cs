@@ -58,11 +58,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public bool isLeftHanded = false;
 
+    private GameText gameText;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         input = InputManager.instance;
+        gameText = GameText.instance;
     }
     private void HandleMovement(float delta)
     {
@@ -140,6 +143,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             tooltipText.SetText("");
+            if (input.wantInteract)
+            {
+                gameText.addText("Nothing can be interacted with");
+            }
         }
     }
 
