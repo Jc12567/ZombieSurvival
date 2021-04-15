@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
             tooltipText.SetText("");
             if (input.wantInteract)
             {
-                gameText.addText("Nothing can be interacted with");
+                //gameText.addText("Nothing can be interacted with");
             }
         }
     }

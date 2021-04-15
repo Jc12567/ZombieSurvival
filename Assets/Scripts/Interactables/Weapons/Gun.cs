@@ -21,6 +21,8 @@ public class Gun : Interactable
     private int maxBloom;
     [SerializeField]
     private int minBloom;
+    [SerializeField]
+    private ParticleSystem gunShotParticle;
 
     [Header("Objects")]
     [SerializeField]
@@ -36,10 +38,12 @@ public class Gun : Interactable
 
     protected override void HandleUse()
     {
+        timeToFire -= (fireRate / 1000);
         if (activated)
         {
             if (input.wantUse && timeToFire <=0)
             {
+                gunShotParticle.Play();
                 Physics.Raycast(muzzle.position, muzzle.forward, out enemyRaycast, enemyLayer);
                 enemy = enemyRaycast.collider.gameObject;
                 enemy.GetComponent<DamageController>().AddDamage(damage);
@@ -51,9 +55,5 @@ public class Gun : Interactable
     {
         transform.position = parent.position;
         transform.parent = parent;
-    }
-    private void FixedUpdate()
-    {
-        timeToFire -= timeToFire / (100 / fireRate);
     }
 }
