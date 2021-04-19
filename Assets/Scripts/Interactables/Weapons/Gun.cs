@@ -38,13 +38,13 @@ public class Gun : Interactable
 
     protected override void HandleUse()
     {
-        timeToFire -= (fireRate / 1000);
+        timeToFire -= (fireRate / 100000);
         if (activated)
         {
             if (input.wantUse && timeToFire <=0)
             {
+                Physics.SphereCast(muzzle.position, 0.01f, muzzle.forward, out enemyRaycast, range, enemyLayer);
                 gunShotParticle.Play();
-                Physics.Raycast(muzzle.position, muzzle.forward, out enemyRaycast, enemyLayer);
                 enemy = enemyRaycast.collider.gameObject;
                 enemy.GetComponent<DamageController>().AddDamage(damage);
             }
