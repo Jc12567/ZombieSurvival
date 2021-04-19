@@ -62,9 +62,11 @@ crashlytics-build.properties
 Assets/TextMesh Pro/
 Assets/Graphics/
 Assets/Audio/
+Assets/Imports/
 
 #Ignore relevant META files
 
 Assets/TextMesh Pro.meta
 Assets/Graphics.meta
 Assets/Audio.meta
+Assets/Imports.meta
