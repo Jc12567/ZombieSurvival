@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private float edgeRadius = 0.4f;
+    private float characterHeight;
 
     [Header("Objects")]
     [SerializeField]
@@ -41,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private Transform rightHand;
     [SerializeField]
     private Transform leftHand;
+    [SerializeField]
+    private CharacterController character;
 
     [Header("Interact")]
     [SerializeField]
@@ -66,17 +69,20 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         input = InputManager.instance;
         gameText = GameText.instance;
+        characterHeight = character.height;
     }
     private void HandleMovement(float delta)
     {
+        character.height = characterHeight;
         Vector3 movement = (input.move.x * transform.right) + (input.move.y * transform.forward);
         if (input.wantCrouch)
         {
+            character.height /= 2;
             speed = crouchSpeed;
             awayEdge = Physics.CheckSphere(crouchCheck.position, edgeRadius, groundLayer);
             if (!awayEdge)
             {
-                    WaitUntil.Equals(awayEdge, true);
+                WaitUntil.Equals(awayEdge, true);
             }
             else
             {
