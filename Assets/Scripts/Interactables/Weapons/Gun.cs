@@ -28,6 +28,10 @@ public class Gun : Interactable
     [SerializeField]
     private Transform muzzle;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioSource audio;
+
     private RaycastHit enemyRaycast;
     private GameObject enemy;
     private int timeToFire;
@@ -45,6 +49,7 @@ public class Gun : Interactable
             {
                 Physics.SphereCast(muzzle.position, 0.01f, muzzle.forward, out enemyRaycast, range, enemyLayer);
                 gunShotParticle.Play();
+                audio.Play();
                 enemy = enemyRaycast.collider.gameObject;
                 enemy.GetComponent<DamageController>().AddDamage(damage);
             }

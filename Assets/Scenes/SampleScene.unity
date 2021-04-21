@@ -1177,8 +1177,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976851508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.820084, y: 0.97597027, z: 1.277987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1657307117}
@@ -1342,37 +1342,37 @@ PrefabInstance:
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9979306
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0033240935
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.06421479
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00021389857
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.379
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -7.3640003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175309, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.049000002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438710119966175310, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
