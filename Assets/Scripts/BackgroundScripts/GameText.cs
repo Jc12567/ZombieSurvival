@@ -18,15 +18,17 @@ public class GameText : MonoBehaviour
     public void addText(string text)
     {
         text.Equals("/n" + text);
-        strings.Add(text);
-        if (strings.Count >=5)
+        if (!strings.Contains(text))
         {
-            strings.RemoveAt(4);
+            strings.Add(text);
+            if (strings.Count >= 5)
+            {
+                strings.RemoveAt(4);
+            }
+            for (int i = 0; i <= strings.Count - 1; i++)
+            {
+                gameText.SetText((string)strings[i] + gameText);
+            }
         }
-        for (int i = 0; i <= strings.Count -1; i++)
-        {
-            gameText.SetText((string)strings[i] + gameText);
-        }
-        
     }
 }
