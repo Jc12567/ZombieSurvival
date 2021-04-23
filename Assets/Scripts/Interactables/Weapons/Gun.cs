@@ -23,10 +23,14 @@ public class Gun : Interactable
     private int minBloom;
     [SerializeField]
     private ParticleSystem gunShotParticle;
+    [SerializeField]
+    private Object bullet;
 
     [Header("Objects")]
     [SerializeField]
     private Transform muzzle;
+    [SerializeField]
+    private Transform camera;
 
     [Header("Audio")]
     [SerializeField]
@@ -42,14 +46,15 @@ public class Gun : Interactable
 
     protected override void HandleUse()
     {
-        timeToFire -= (fireRate / 100000);
+        timeToFire -= (int)((fireRate * Time.deltaTime)/ 100000);
         if (activated)
         {
             if (input.wantUse && timeToFire <=0)
             {
-                Physics.SphereCast(muzzle.position, 0.01f, muzzle.forward, out enemyRaycast, range, enemyLayer);
+                Physics.SphereCast(camera.position, 0.01f, camera.forward, out enemyRaycast, range, enemyLayer);
                 gunShotParticle.Play();
                 audio.Play();
+                Instantiate(bullet, muzzle.forward, muzzle.rotation, muzzle);
                 enemy = enemyRaycast.collider.gameObject;
                 enemy.GetComponent<DamageController>().AddDamage(damage);
             }
