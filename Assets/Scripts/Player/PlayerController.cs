@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float interactDistance = 2f;
     [SerializeField]
-    private GameObject handItem;
+    public GameObject handItem;
     [SerializeField]
     private GameObject placeholderHandItem;
     [SerializeField]
@@ -126,19 +126,33 @@ public class PlayerController : MonoBehaviour
             tooltipText.SetText("Press 'E' to interact with " + item.name);
             if (input.wantInteract)
             {
-                handItem = item;
-                handItem.GetComponent<Interactable>().Activate();
-                if (!isLeftHanded)
+                if (item.name == "Build Area")
                 {
-                    item.transform.SetParent(mainCamera);
-                    item.transform.localPosition = rightHand.localPosition;
-                    item.transform.localRotation = rightHand.localRotation;
+                    if (item.tag == "BuildRaft")
+                    {
+                        //build raft code
+                    }
+                    else if (item.tag == "BuildCar")
+                    {
+                        //build car code
+                    }
                 }
                 else
                 {
-                    item.transform.SetParent(mainCamera);
-                    item.transform.localPosition = leftHand.localPosition;
-                    item.transform.localRotation = leftHand.localRotation;
+                    handItem = item;
+                    handItem.GetComponent<Interactable>().Activate();
+                    if (!isLeftHanded)
+                    {
+                        item.transform.SetParent(mainCamera);
+                        item.transform.localPosition = rightHand.localPosition;
+                        item.transform.localRotation = rightHand.localRotation;
+                    }
+                    else
+                    {
+                        item.transform.SetParent(mainCamera);
+                        item.transform.localPosition = leftHand.localPosition;
+                        item.transform.localRotation = leftHand.localRotation;
+                    }
                 }
             }
         }
