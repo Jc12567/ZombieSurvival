@@ -130,11 +130,11 @@ public class PlayerController : MonoBehaviour
                 {
                     if (item.tag == "BuildRaft")
                     {
-                        //build raft code
+                        item.GetComponent<BuildObject>().buildRaft();
                     }
                     else if (item.tag == "BuildCar")
                     {
-                        //build car code
+                        item.GetComponent<BuildObject>().buildCar();
                     }
                 }
                 else

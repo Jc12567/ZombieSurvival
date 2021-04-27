@@ -8,6 +8,8 @@ public class BuildObject : MonoBehaviour
 
     public void buildRaft()
     {
+        Debug.Log("NOW IMAGINE A RAFT HERE");
+
         if (player.GetComponent<PlayerController>().handItem.tag == "BuildRaft")
         {
             //place raft object
@@ -16,6 +18,8 @@ public class BuildObject : MonoBehaviour
 
     public void buildCar()
     {
+        Debug.Log("NOW IMAGINE A CAR HERE");
+
         if (player.GetComponent<PlayerController>().handItem.tag == "BuildCar")
         {
             //place car object
