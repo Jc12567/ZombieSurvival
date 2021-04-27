@@ -64,6 +64,7 @@ public class InputManager : MonoBehaviour
             controls.Main.Jump.performed += controls => wantJump = true;
             controls.Main.Jump.canceled += controls => wantJump = false;
             controls.Main.Pause.performed += controls => wantPause = true;
+            controls.Main.Pause.canceled += controls => wantPause = false;
 
             if (holdSprint)
             {
