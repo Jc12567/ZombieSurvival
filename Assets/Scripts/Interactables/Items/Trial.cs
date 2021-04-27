@@ -11,12 +11,15 @@ public class Trial : Interactable
     [Header("Animation")]
     [SerializeField]
     private float speed = 2f;
+
+    public Transform childTransform;
     protected override void HandleAnimation()
     {
         if (activated)
-        {
+        {        
+            Debug.Log(childTransform.gameObject.name);
             Quaternion rotation = Quaternion.Euler(speed, speed, speed);
-            transform.rotation *= rotation;
+            childTransform.rotation *= rotation;
         }
     }
 
@@ -24,11 +27,16 @@ public class Trial : Interactable
     {
         if(activated && input.wantUse)
         {
-            gameObject.transform.localPosition += transform.parent.forward * power;
+            transform.Translate(parent.forward * power, transform);
         }
         if(activated && input.wantExtra)
         {
-            gameObject.transform.localPosition -= transform.parent.forward * power;
+            transform.Translate((transform.position - parent.position), transform);
         }
+    }
+    protected override void Init()
+    {
+        transform.position = parent.position;
+        transform.parent = parent;
     }
 }

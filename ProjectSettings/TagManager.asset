@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trial
+  - Target
+  - ExplosiveBarrel
+  - Metal
   layers:
   - Default
   - TransparentFX
@@ -16,6 +19,7 @@ TagManager:
   - 
   - Ground
   - Interactable
+  - Enemy
   - Barrier
   - 
   - 

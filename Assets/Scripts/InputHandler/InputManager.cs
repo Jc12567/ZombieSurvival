@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     public bool wantExtra { get; private set; } = false;
     public bool wantDrop { get; private set; } = false;
     public bool wantJump { get; private set; } = false;
+    public bool wantPause { get; private set; } = false;
 
     [Header("Movement")]
     [SerializeField]
@@ -62,6 +63,7 @@ public class InputManager : MonoBehaviour
             controls.Main.Drop.canceled += controls => wantDrop = false;
             controls.Main.Jump.performed += controls => wantJump = true;
             controls.Main.Jump.canceled += controls => wantJump = false;
+            controls.Main.Pause.performed += controls => wantPause = true;
 
             if (holdSprint)
             {
@@ -80,6 +82,6 @@ public class InputManager : MonoBehaviour
             else
             {
                 controls.Main.Crouch.performed += controls => wantCrouch = !wantCrouch;
-                }
+            }
     }
 }

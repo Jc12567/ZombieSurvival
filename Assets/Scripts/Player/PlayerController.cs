@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private float edgeRadius = 0.4f;
+    private float characterHeight;
 
     [Header("Objects")]
     [SerializeField]
@@ -36,17 +37,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform crouchCheck;
     [SerializeField]
-    private Transform interactCheck;
-    [SerializeField]
     private Transform mainCamera;
     [SerializeField]
     private Transform rightHand;
     [SerializeField]
     private Transform leftHand;
+    [SerializeField]
+    private CharacterController character;
 
     [Header("Interact")]
     [SerializeField]
     private float interactDistance = 2f;
+    [SerializeField]
+    private float interactRadius = 0.5f;
     [SerializeField]
     private GameObject handItem;
     [SerializeField]
@@ -58,22 +61,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public bool isLeftHanded = false;
 
+    private GameText gameText;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         input = InputManager.instance;
+        gameText = GameText.instance;
+        characterHeight = character.height;
     }
     private void HandleMovement(float delta)
     {
+        character.height = characterHeight;
         Vector3 movement = (input.move.x * transform.right) + (input.move.y * transform.forward);
         if (input.wantCrouch)
         {
+            character.height /= 2;
             speed = crouchSpeed;
             awayEdge = Physics.CheckSphere(crouchCheck.position, edgeRadius, groundLayer);
             if (!awayEdge)
             {
-                    WaitUntil.Equals(awayEdge, true);
+                WaitUntil.Equals(awayEdge, true);
             }
             else
             {
@@ -119,7 +128,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit raycastHit;
         GameObject item;
-        bool canInteract = Physics.Raycast(mainCamera.position, mainCamera.forward, out raycastHit, interactDistance, interactableLayer);
+        bool canInteract = Physics.SphereCast(mainCamera.position, interactRadius, mainCamera.forward, out raycastHit, interactDistance, interactableLayer);
         if (canInteract)
         {
             item = raycastHit.collider.gameObject;
@@ -127,24 +136,23 @@ public class PlayerController : MonoBehaviour
             if (input.wantInteract)
             {
                 handItem = item;
-                handItem.GetComponent<Interactable>().Activate();
                 if (!isLeftHanded)
                 {
-                    item.transform.SetParent(mainCamera);
-                    item.transform.localPosition = rightHand.localPosition;
-                    item.transform.localRotation = rightHand.localRotation;
+                    handItem.GetComponent<Interactable>().Activate(rightHand);
                 }
                 else
                 {
-                    item.transform.SetParent(mainCamera);
-                    item.transform.localPosition = leftHand.localPosition;
-                    item.transform.localRotation = leftHand.localRotation;
+                    handItem.GetComponent<Interactable>().Activate(leftHand);
                 }
             }
         }
         else
         {
             tooltipText.SetText("");
+            if (input.wantInteract)
+            {
+                gameText.addText("Nothing can be interacted with");
+            }
         }
     }
 
