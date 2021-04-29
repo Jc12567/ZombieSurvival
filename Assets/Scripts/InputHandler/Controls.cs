@@ -64,7 +64,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""5ebe05c5-97e0-4645-8a67-b8ce429288da"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=1,pressPoint=1)""
                 },
                 {
                     ""name"": ""Extra"",

@@ -56,8 +56,7 @@ public class PlayerController : MonoBehaviour
     private GameObject placeholderHandItem;
     [SerializeField]
     private LayerMask interactableLayer;
-    [SerializeField]
-    private TMP_Text tooltipText;
+    private TooltipText tooltipText;
     [SerializeField]
     public bool isLeftHanded = false;
 
@@ -70,6 +69,7 @@ public class PlayerController : MonoBehaviour
         input = InputManager.instance;
         gameText = GameText.instance;
         characterHeight = character.height;
+        tooltipText = TooltipText.instance;
     }
     private void HandleMovement(float delta)
     {
