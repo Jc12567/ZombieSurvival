@@ -23,8 +23,6 @@ public class Gun : Interactable
     private int minBloom;
     [SerializeField]
     private ParticleSystem gunShotParticle;
-    [SerializeField]
-    private Object bullet;
 
     [Header("Objects")]
     [SerializeField]
@@ -38,15 +36,22 @@ public class Gun : Interactable
 
     private RaycastHit enemyRaycast;
     private GameObject enemy;
-    private int timeToFire;
+    private float timeToFire;
+    private Vector3 startPos;
+    private Quaternion startRot;
     protected override void HandleAnimation()
     {
-        
+        if (activated)
+        {
+            if (input.wantUse)
+            {
+                transform.localRotation.SetFromToRotation(transform.localPosition, transform.up);
+            }
+        }
     }
 
     protected override void HandleUse()
     {
-        timeToFire -= (int)((fireRate * Time.deltaTime)/ 100000);
         if (activated)
         {
             if (input.wantUse && timeToFire <=0)
@@ -54,9 +59,9 @@ public class Gun : Interactable
                 Physics.SphereCast(camera.position, 0.01f, camera.forward, out enemyRaycast, range, enemyLayer);
                 gunShotParticle.Play();
                 audio.Play();
-                Instantiate(bullet, muzzle.forward, muzzle.rotation, muzzle);
                 enemy = enemyRaycast.collider.gameObject;
                 enemy.GetComponent<DamageController>().AddDamage(damage);
+                timeToFire = 100/fireRate;
             }
         }
     }
@@ -65,5 +70,17 @@ public class Gun : Interactable
     {
         transform.position = parent.position;
         transform.parent = parent;
+        startPos = transform.localPosition;
+        startRot = transform.localRotation;
+        transform.localRotation.SetFromToRotation(transform.localPosition, parent.forward);
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (!(timeToFire <= 0))
+        {
+            timeToFire -= (fireRate* Time.deltaTime)/10;
+        }
     }
 }

@@ -21,7 +21,7 @@ public abstract class Interactable : MonoBehaviour
     {
         input = InputManager.instance;
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         HandleAnimation();
         HandleUse();
