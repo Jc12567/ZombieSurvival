@@ -167,4 +167,9 @@ public class PlayerController : MonoBehaviour
         HandleInteract();
         HandleDrop();
     }
+
+    public void TakeDamage()
+    {
+        Debug.Log("I have been hit");
+    }
 }
