@@ -309,6 +309,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1012919194865431407}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1099224044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6438710119966175308, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
+    type: 3}
+  m_PrefabInstance: {fileID: 6438710120881059788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1099224050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099224044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951a82ba2ce0fa94892e3d9408810976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  fireRate: 50
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  range: 500
+  heaviness: 0
+  maxBloom: 0
+  minBloom: 0
+  gunShotParticle: {fileID: 169523376}
+  muzzle: {fileID: 1842550004}
+  camera: {fileID: 963194228}
+  audio: {fileID: 1301674387}
 --- !u!82 &1301674387 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7518054214435181349, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
@@ -561,9 +592,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4963122622116097176, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
+      propertyPath: range
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963122622116097176, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
+        type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 4963122622116097176, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
+        type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963122622116097176, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
+        type: 3}
+      propertyPath: fireRate
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4963122622116097176, guid: 1b0118d4383554d4ebcb6e4c2eb9ec27,
         type: 3}
       propertyPath: gunShotParticle

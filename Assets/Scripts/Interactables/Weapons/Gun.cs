@@ -72,7 +72,7 @@ public class Gun : Interactable
         transform.parent = parent;
         startPos = transform.localPosition;
         startRot = transform.localRotation;
-        transform.localRotation.SetFromToRotation(transform.localPosition, parent.forward);
+        transform.localRotation = parent.localRotation;
     }
 
     protected override void FixedUpdate()
@@ -80,7 +80,7 @@ public class Gun : Interactable
         base.FixedUpdate();
         if (!(timeToFire <= 0))
         {
-            timeToFire -= (fireRate* Time.deltaTime)/10;
+            timeToFire -= (fireRate* Time.deltaTime)/100;
         }
     }
 }

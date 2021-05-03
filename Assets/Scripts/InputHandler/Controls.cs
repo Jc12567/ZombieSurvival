@@ -56,7 +56,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""0efccac1-b740-48b1-bea6-66c63d5e1cc6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(pressPoint=1,behavior=2)""
                 },
                 {
                     ""name"": ""Use"",
@@ -64,7 +64,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""5ebe05c5-97e0-4645-8a67-b8ce429288da"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=1,pressPoint=1)""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Extra"",

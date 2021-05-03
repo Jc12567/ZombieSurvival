@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
         if (input.wantDrop)
         {
             handItem.transform.SetParent(null);
+            handItem.transform.position = groundCheck.transform.position;
             handItem.gameObject.GetComponent<Interactable>().Deactivate();
             handItem = placeholderHandItem;
         }
