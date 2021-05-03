@@ -9,8 +9,6 @@ public class CrateOpen : Interactable
     private GameObject openedCrate;
     [SerializeField]
     private GameObject crateTop;
-    [SerializeField]
-    private GameObject item;
 
     [Header("Positions")]
     [SerializeField]
