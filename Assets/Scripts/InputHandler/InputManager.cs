@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
 
     public bool wantSprint { get; private set; } = false;
     public bool wantCrouch { get; private set; } = false;
-    public bool wantInteract { get; private set; } = false;
+    public bool wantInteract { get; set; } = false;
     public bool wantUse { get; private set; } = false;
     public bool wantExtra { get; private set; } = false;
     public bool wantDrop { get; private set; } = false;

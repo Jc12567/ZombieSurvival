@@ -11,6 +11,7 @@ public class SpawnPlayer : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        Spawn();
     }
 
     public void Spawn()

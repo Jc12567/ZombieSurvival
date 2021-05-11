@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float interactRadius = 0.5f;
     [SerializeField]
-    private GameObject handItem;
+    public GameObject handItem;
     [SerializeField]
     private GameObject placeholderHandItem;
     [SerializeField]
@@ -135,6 +135,7 @@ public class PlayerController : MonoBehaviour
             tooltipText.SetText("Press 'E' to interact with " + item.name);
             if (input.wantInteract)
             {
+                input.wantInteract = false;
                 handItem = item;
                 if (!isLeftHanded)
                 {
